@@ -5,18 +5,21 @@
 #include <stdlib.h>
 #include <cmath>
 #include <utility>
+#include <vector>
 
 using namespace std;
 
 class Node{
 public:
 	pair<long,int> conf[7];
+	long val;
 	
 	Node();
-	Node(pair<long,int> v[]);
+	Node(Node *a);
 	
-	void play(int row,int player);
+	int play(int row,int player);
 	int pos(int i,int j);
+	vector<Node> child_list(int player);
 
 	void print_board();
 };
