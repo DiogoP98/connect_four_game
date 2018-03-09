@@ -7,17 +7,20 @@ Node::Node(){
 	}
 }
 
-Node::Node(pair<long,int> v[]){
+Node::Node(Node *a){
 	for(int i=0;i<7;i++){
-		this->conf[i].first=v[i].first;
-		this->conf[i].second=v[i].second;
+		this->conf[i].first=a->conf[i].first;
+		this->conf[i].second=a->conf[i].second;
 	}
 }
 
-void Node::play(int row,int player){
+int Node::play(int row,int player){
+	if(row<0 || row>6 || conf[row].second==6)
+		return 1;
 	this->conf[row].first*=10;
 	this->conf[row].first+=player;
 	this->conf[row].second++;
+	return 0;
 }
 
 int Node::pos(int i,int j){
@@ -25,9 +28,21 @@ int Node::pos(int i,int j){
 		printf("Error: pos out of board!\n");
 		exit(1);
 	}
-	if(this->conf[j].second<=i)return 0;
+	if(this->conf[j].second<=i)
+		return 0;
 	int a = this->conf[j].first / (long)pow(10,this->conf[j].second-i-1);
 	return a%10;
+}
+
+vector<Node> Node::child_list(int player){
+	vector<Node> l;
+	Node *x;
+	for(int i=0;i<7;i++){
+		x = new Node(this);
+		if(!x->play(i,player))
+			l.push_back(x);
+	}
+	return l;
 }
 
 void Node::print_board(){
@@ -37,4 +52,5 @@ void Node::print_board(){
 		}
 		printf("\n");
 	}
+	printf("\n");
 }
