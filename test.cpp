@@ -1,14 +1,18 @@
 #include <stdio.h>
 
 #include "node.h"
+#include "minimax.h"
 
 int main(){
-	Node *a = new Node();
+	Node *a = new Node(); //create empty node
 	
+	//test if working with empty node
 	printf("final? %d\n",a->final_board());
 	a->print_board();
 	
+	//add pieces
 	a->play(0,1);
+	a->play(0,2);
 	a->play(0,2);
 	a->play(0,2);
 	
@@ -23,6 +27,10 @@ int main(){
 		
 	return 0;
 }
+
+
+/*for Debug/tests*/
+
 
 /*
    printf("------------------\n\n");
