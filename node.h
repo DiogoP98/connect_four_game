@@ -7,19 +7,19 @@
 #include <utility>
 #include <vector>
 
-using namespace std;
-
 class Node{
 public:
-	pair<long,int> conf[7];
-	long val;
+	std::pair<int,int> conf[7];
+	int last_play; //column
+	int val;
 	
 	Node();
 	Node(Node *a);
 	
-	int play(int row,int player);
+	int play(int column,int player);
 	int pos(int i,int j);
-	vector<Node> child_list(int player);
+	std::vector<Node> child_list(int player);
+	int final_board();//1-player 1 wins; 2-player 2 wins; 0 draw, -1 no final
 
 	void print_board();
 };
