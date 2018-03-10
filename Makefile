@@ -7,6 +7,7 @@ CFLAGS= -std=c++11
 # Source files
 SRC =                   \
 	test.cpp	\
+        minimax.cpp     \
 	node.cpp	\
 
 OBJ =  ${SRC:.cpp=.o}
@@ -21,5 +22,4 @@ ${EXEC_NAME}: ${OBJ}
 
 clean:
 	rm ${EXEC_NAME} *.o *~ *# -rf
-
 
