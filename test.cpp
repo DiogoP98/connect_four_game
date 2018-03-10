@@ -15,10 +15,10 @@ int main(){
 	printf("final? %d\n",a->final_board());
 	a->print_board();
 	
-	a->play(0,2);
-	a->play(0,2);
+	a->play(2,1);
+	a->play(3,1);
 	
-	printf("final? %d\n",a->final_board());
+	printf("final? %d, val = %d\n",a->final_board(),a->eval_board());
 	a->print_board();
 		
 	return 0;
