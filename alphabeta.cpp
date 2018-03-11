@@ -1,6 +1,4 @@
 #include "alphabeta.h"
-#include <climits>
-#include <cmath>
 
 int Aphabeta::alphabeta(Node *a,int k){
   int alfa = INT_MIN;
