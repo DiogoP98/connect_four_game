@@ -2,6 +2,7 @@
 
 #include "node.h"
 #include "minimax.h"
+#include "alphabeta.h"
 
 void game_player(Node *a);
 void game_bot   (Node *a);
@@ -45,7 +46,7 @@ void game_bot(Node *a){
 	a->print_board();
 	
 	printf("Bot thinking..\n");
-	int c = minimax(a);
+	int c = Minimax::minimax(a);
 	printf("Bot chooses column %d\n",c);
 	a->play(c,2);
 	game_player(a);
