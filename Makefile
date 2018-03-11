@@ -8,7 +8,8 @@ CFLAGS= -std=c++11
 SRC =                   \
 	test.cpp	\
         minimax.cpp     \
-	node.cpp	\
+	alphabeta.cpp   \   
+	node.cpp	
 
 OBJ =  ${SRC:.cpp=.o}
 
