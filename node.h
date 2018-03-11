@@ -10,7 +10,9 @@
 class Node{
 public:
 	std::pair<int,int> conf[7];
-	int last_play; 
+	int last_play;
+	int best_play;
+	int depth;
 	int val;
 	
 	Node();
