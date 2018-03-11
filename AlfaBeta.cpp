@@ -5,10 +5,11 @@
 int AlfaBeta(Node *a,int k){
   int alfa = INT_MIN;
   int beta = INT_MAX;
+  int x;
   if (k==1)
-    min_value(a,alfa,beta,a->depth,10);
+    x=min_value(a,alfa,beta,a->depth,10);
   else
-    max_value(a,alfa,beta,a->depth,10);
+    x=max_value(a,alfa,beta,a->depth,10);
   return a->best_play;
 }
 
@@ -30,6 +31,10 @@ int max_value(Node *a, int alfa, int beta, int depth_in, int depth_max) {
   std::vector<Node> s = a->child_list(2); //filhos do bot
   for (int i=0; i<(int)s.size();i++) {
     int k = std::max (v,min_value ( &s[i], alfa, beta, depth_in, depth_max));
+    if (k!=v) {
+      a->best_play = s[i].last_play;
+      v=k;
+    }
     if (v>=beta)
       return v;
     alfa = std::max (alfa,v);
@@ -56,6 +61,10 @@ int max_value(Node *a, int alfa, int beta, int depth_in, int depth_max) {
   std::vector<Node> s = a->child_list(1); //filhos do player
   for (int i=0; i<(int)s.size();i++) {
     int k = std::min (v,max_value ( &s[i], alfa, beta, depth_in, depth_max));
+    if (k!=v) {
+      a->best_play = s[i].last_play;
+      v=k;
+    }
     if (v<=alfa)
       return v;
     beta = std::min (beta,v);
