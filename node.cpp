@@ -17,6 +17,7 @@ Node::Node(){
 		this->conf[i].second=0;
 	}
 	//intialize last play
+	this->depth = 0;
 	this->last_play = 0;
 }
 
@@ -28,6 +29,7 @@ Node::Node(Node *a){
 		this->conf[i].second=a->conf[i].second;
 	}
 	//copy last_play from a
+	this->depth = a->depth + 1;
 	this->last_play = a->last_play;
 }
 
@@ -183,11 +185,30 @@ int Node::eval_board(){
 
 //print board pretty
 void Node::print_board(){
+	int x;
+	for(int i=0;i<17;i++) printf("*");
+	printf("\n");
 	for(int i=5;i>=0;i--){
+		printf("* ");
 		for(int j=0;j<7;j++){
-			printf("%d ",pos(i,j));
+			x = pos(i,j);
+			switch(x){
+				case 0:
+					printf("- ");
+					break;
+				case 1:
+					printf("o ");
+					break;
+				case 2:
+					printf("x ");
+					break;
+			}
 		}
+		printf("*");
 		printf("\n");
 	}
-	printf("\n");
+	for(int i=0;i<17;i++) printf("*");
+	printf("\n  ");
+	for(int i=0;i<7;i++) printf("%d ",i);
+	printf("\n\n");
 }
