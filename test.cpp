@@ -3,32 +3,68 @@
 #include "node.h"
 #include "minimax.h"
 
+void game_player(Node *a);
+void game_bot   (Node *a);
+void end(int x);
+
 int main(){
+	printf("***************\n");
+	printf("*Conect 4 Game*\n");
+	printf("***************\n\n");
+	
 	Node *a = new Node(); //create empty node
+	game_player(a);
 	
-	//test if working with empty node
-	printf("final? %d\n",a->final_board());
-	a->print_board();
-	
-	//add pieces
-	a->play(0,1);
-	a->play(0,2);
-	a->play(0,2);
-	a->play(0,2);
-	
-	printf("final? %d\n",a->final_board());
-	a->print_board();
-	
-	a->play(2,1);
-	a->play(3,1);
-	
-	printf("final? %d, val = %d\n",a->final_board(),a->eval_board());
-	a->print_board();
-		
 	return 0;
 }
 
+void game_player(Node *a){
+	int k = a->final_board();
+	if(k>-1){
+		a->print_board();
+		end(k);
+		return;
+	}
+	a->print_board();
+	
+	int c;
+	printf("Choose a column: ");
+	scanf("%d",&c);
+	a->play(c,1);
+	game_bot(a);
+	return;
+}
 
+void game_bot(Node *a){
+	int k = a->final_board();
+	if(k>-1){
+		a->print_board();
+		end(k);
+		return;
+	}
+	a->print_board();
+	
+	printf("Bot thinking..\n");
+	int c = minimax(a);
+	printf("Bot chooses column %d\n",c);
+	a->play(c,2);
+	game_player(a);
+	return;
+}
+
+void end(int x){
+	switch(x){
+		case 0:
+			printf("DRAW!\n");
+			return;
+		case 1:
+			printf("Human Player Wins!\n");
+			return;
+		case 2:
+			printf("Bot Player Wins!\n");
+			return;
+	}
+}
 /*for Debug/tests*/
 
 
