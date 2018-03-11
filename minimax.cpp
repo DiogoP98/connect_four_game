@@ -2,7 +2,7 @@
 
 
 
-int minimax(Node *a){
+int Minimax::minimax(Node *a){
 	
 	return 0;
 }
