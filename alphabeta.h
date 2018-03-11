@@ -2,6 +2,8 @@
 #define ALPHABETA_H
 
 #include <stdio.h>
+#include <climits>
+#include <cmath>
 
 #include "node.h"
 class Alphabeta{
