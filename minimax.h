@@ -5,6 +5,9 @@
 
 #include "node.h"
 
-int minimax(Node *a);
+class Minimax{
+public:
+ static int minimax(Node *a);
+};
 
 #endif // MINIMAX_H
