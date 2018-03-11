@@ -1,6 +1,6 @@
 #include "alphabeta.h"
 
-int Aphabeta::alphabeta(Node *a,int k){
+int Alphabeta::alphabeta(Node *a,int k){
   int alfa = INT_MIN;
   int beta = INT_MAX;
   int x;
@@ -11,7 +11,7 @@ int Aphabeta::alphabeta(Node *a,int k){
   return a->best_play;
 }
 
-int Aphabeta::max_value(Node *a, int alfa, int beta, int depth_in, int depth_max) {
+int Alphabeta::max_value(Node *a, int alfa, int beta, int depth_in, int depth_max) {
   int k = a->final_board();
   if(k>-1 || a->depth-depth_in>depth_max){
     switch(k){
@@ -41,7 +41,7 @@ int Aphabeta::max_value(Node *a, int alfa, int beta, int depth_in, int depth_max
 }
 
 
-int Aphabeta::min_value(Node *a, int alfa, int beta, int depth_in, int depth_max) {
+int Alphabeta::min_value(Node *a, int alfa, int beta, int depth_in, int depth_max) {
   int k = a->final_board();
   if(k>-1 || a->depth-depth_in>depth_max){
     switch(k){
