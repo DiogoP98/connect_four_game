@@ -1,12 +1,12 @@
 #include "minimax.h"
 
-long long expandidos;
+long long expandidos2;
 
 int Minimax::minimax(Node *a,int k, int depthx){
-	expandidos = 0;
+	expandidos2 = 0;
 	if(k==1)min_value(a,depthx); //o 
 	else max_value(a,depthx);    //x 
-	printf ("Nos expandidos: %lld\n", expandidos);
+	printf ("Nos expandidos: %lld\n", expandidos2);
 	return a->best_play;
 }
 
@@ -39,7 +39,7 @@ int Minimax::max_value(Node *a,int depth_max){
 		//printf("a %d\n",kk);
 		
 		if(!kk){
-			expandidos++;
+			expandidos2++;
 			a->depth++;
 			x = min_value(a,depth_max);
 			//printf("%d\n",x);
@@ -98,7 +98,7 @@ int Minimax::min_value(Node *a,int depth_max){
 		//printf("b %d\n",kk);
 		
 		if(!kk){
-			expandidos++;
+			expandidos2++;
 			a->depth++;
 			x = max_value(a,depth_max);
 			//printf("%d\n",x);
