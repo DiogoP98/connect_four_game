@@ -7,20 +7,24 @@
 #include <utility>
 #include <vector>
 
+#include "common.h"
+
 class Node{
 public:
-	std::pair<int,int> conf[7];
+	int conf[6][7];
+	int np[7];
 	int last_play;
 	int best_play;
 	int depth;
-	int val;
+	int nx[7];
 	
 	Node();
 	Node(Node *a);
 	
 	int play(int column,int player);
+	int rmplay(int lp);
 	int pos(int i,int j);
-	std::vector<Node> child_list(int player);
+	std::vector<Node*> child_list(int player);
 	int final_board();
 	int eval(int i, int j);
 	int eval_board();
@@ -29,3 +33,4 @@ public:
 };
 
 #endif // NODE_H
+
