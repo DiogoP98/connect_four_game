@@ -3,7 +3,8 @@
 
 #include <stdio.h>
 #include <climits>
-#include <cmath>
+#include <vector>
+#include <algorithm>
 
 #include "node.h"
 
