@@ -1,49 +1,59 @@
 # connect_four_game
 
-Descrição do programa:
+### Descrição do programa:
 
-	No zip que enviámos estão os seguintes ficheiros: “alphabeta.cpp”, “alphabeta.h”, “common.h”, “minimax.cpp”, “minimax.h”, “myboost.cpp”, “myboost.h”, “node.cpp”, “node.h”, “connect4.cpp”,"Makefile". 
-	O ficheiro “connect4.cpp” contém a função main,  o “alphabeta.cpp” contém a implementação do alphabeta, “minimax.cpp” contém a implementação do minimax, “myboost.cpp” contém a função que pré-calcula todas as combinações possíveis de segmentos de 4, 5, 6 e 7 e o “node.cpp” é o ficheiro que contém a implementação de nó.
-
--------------------------------------------
-
-Requerimentos:
-
-	Compilador g++ com c++ versão 11.
+No zip que enviámos estão os seguintes ficheiros: “alphabeta.cpp”, “alphabeta.h”, “common.h”, “minimax.cpp”, “minimax.h”, “myboost.cpp”, “myboost.h”, “node.cpp”, “node.h”, “connect4.cpp”,"Makefile". <br/> <br/> 
+O ficheiro “connect4.cpp” contém a função main,  o “alphabeta.cpp” contém a implementação do alphabeta, “minimax.cpp” contém a implementação do minimax, “myboost.cpp” contém a função que pré-calcula todas as combinações possíveis de segmentos de 4, 5, 6 e 7 e o “node.cpp” é o ficheiro que contém a implementação de nó. <br/> 
 
 -------------------------------------------
 
-Instruções para compilar e executar:
+### Requerimentos:
 
-	Compilar: make
-	executar: ./connect4
-
--------------------------------------------
-
-Execução:
-
-	No inicio do programa vai ser questionado as seguintes perguntas:
-		Se quer bot contra bot;
-		Qual metodo pretendido (MiniMax ou AlphaBeta);
-	Caso escolha bot contra bot:
-		Qual a dificuldade do primeiro bot (X), que vai ser o primeiro a jogar;
-		Qual a dificuldade do segundo bot (O);
-	Caso escolha jogador contra bot:
-		Qual a dificuldade do bot;
-		Que simbolo pretende usar;
-		Se quer ser o primeiro a jogar;
-	Em cada jogada do jogador humano é pedido o número da coluna pretendida (0 a 6)
-	Em cada jogada do bot é mostrado o tempo em milissegundo que demorou a fazer a jogada, numero de nós expandindos (em caso de ser AlphaBeta também o número de podas).
-	Quando algum jogador ganhar é impresso o símbolo do jogador que ganhou e o tempo total de jogo do bot.
-	É depois questionado se pretende jogar outra vez e terá de fazer todos os passos acima descritos.
+Compilador g++ com c++ versão 11. <br/> 
 
 -------------------------------------------
 
-Nota:
+### Instruções para compilar e executar:
 
-	Caso encontre algum erro a compilar tente uma compilacao limpa: make clean & make.
+Compilar: make <br/> 
+executar: ./connect4 <br/> 
 
-Diogo Pereira           201605323
-Afonso Fernandes        291696852
-Lucas Paula             201608440
+-------------------------------------------
+
+### Execução:
+
+No inicio do programa vai ser questionado as seguintes perguntas: <br/> 
+* Se quer bot contra bot; <br/> 
+* Qual metodo pretendido (MiniMax ou AlphaBeta); <br/> 
+
+Caso escolha bot contra bot: <br/> 
+* Qual a dificuldade do primeiro bot (X), que vai ser o primeiro a jogar; <br/> 
+* Qual a dificuldade do segundo bot (O); <br/> 
+
+Caso escolha jogador contra bot: <br/> 
+* Qual a dificuldade do bot; <br/> 
+* Que simbolo pretende usar; <br/> 
+* Se quer ser o primeiro a jogar; <br/> 
+
+Em cada jogada do jogador humano é pedido o número da coluna pretendida (0 a 6) <br/> 
+
+Em cada jogada do bot é mostrado o tempo em milissegundo que demorou a fazer a jogada, numero de nós expandindos (em caso de ser AlphaBeta também o número de podas). <br/> 
+
+Quando algum jogador ganhar é impresso o símbolo do jogador que ganhou e o tempo total de jogo do bot. <br/> 
+
+É depois questionado se pretende jogar outra vez e terá de fazer todos os passos acima descritos. <br/> 
+
+-------------------------------------------
+
+### Nota:
+
+Caso encontre algum erro a compilar tente uma compilacao limpa: make clean & make. <br/> 
+
+-------------------------------------------
+
+### Autores:
+
+Diogo Pereira           201605323 <br/> 
+Afonso Fernandes        291696852 <br/> 
+Lucas Paula             201608440 <br/> 
 
