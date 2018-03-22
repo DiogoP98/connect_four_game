@@ -9,7 +9,8 @@ O ficheiro “connect4.cpp” contém a função main,  o “alphabeta.cpp” co
 
 ### Requerimentos:
 
-Compilador g++ com c++ versão 11. <br/> 
+Compilador g++ com c++ versão 11. <br/>
+OS linux. (necessário devido a utilização da biblioteca readline)
 
 -------------------------------------------
 
