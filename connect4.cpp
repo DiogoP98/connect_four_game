@@ -5,13 +5,13 @@
 #include <readline/readline.h>
 #include <readline/history.h>
 
+//dependecies
 #include "node.h"
 #include "minimax.h"
 #include "alphabeta.h"
 #include "myboost.h"
 
-double totaltime;
-
+//functions
 void game();
 void gamex();
 void gameo();
@@ -26,7 +26,9 @@ int is0(char *l);
 int isn(char *l);
 int isn2(char *l);
 
+//variables
 Node *a;
+double totaltime;
 int botvbot;
 int mysymbol;
 int method;
@@ -35,108 +37,68 @@ int difficulty2;
 bool flip;
 
 int main(){
-	//printf("\033c");
+	printf("\033c");
 	printf("***************\n");
 	printf("*Conect 4 Game*\n");
 	printf("***************\n");
 	
+	//generate all valid combinations of 4, 5, 6 and 7 and evaluate them
 	printf("\nLoading..\n");
 	MyBoost::load_boost();
 	
-	//std::map<int,int>::iterator it;
-	//for(it=Global m4;i<)
-	
-	a = new Node();
-	
-	/*
-	for(int i=0;i<6;i++)
-		for(int j=0;j<7;j++)
-			scanf("%d",&a->conf[i][j]);
-	*/
-	/*
-	a->play(0,1);
-	a->play(0,1);
-	a->play(0,2);
-	a->play(0,1);
-	a->play(0,2);
-	a->play(0,1);
-	
-	a->play(1,1);
-	a->play(1,2);
-	a->play(1,2);
-	a->play(1,1);
-	a->play(1,1);
-	a->play(1,2);
-	
-	a->play(2,1);
-	a->play(2,2);
-	a->play(2,1);
-	a->play(2,2);
-	a->play(2,1);
-	a->play(2,1);
-	
-	a->play(3,2);
-	a->play(3,1);
-	a->play(3,2);
-	a->play(3,1);
-	a->play(3,2);
-	a->play(3,2);
-	
-	a->play(4,2);
-	
-	a->play(5,2);
-	a->play(5,2);
-	a->play(5,2);
-	a->play(5,1);
-	a->play(5,1);
-	a->play(5,2);
-	
-	a->play(6,1);
-	a->play(6,1);
-	a->play(6,2);
-	
-	a->print_board();
-	printf("%d\n",a->eval_board());	
-*/	
-
-
+	//for many games in a row
 	bool gg=true;
 	
 	while(gg){
-		totaltime=0;
+		totaltime=0; //time consumed by bot(s)
 		a = new Node(); //create empty node
 		
 		char *l;
 		
 		l= readline("\nDo you want bot against bot?\n1-Yes\n2-No\n\nOption: ");
+		add_history(l);
 		while(!(botvbot=is0(l))){
 			l= readline("Invalid! Option: ");
 			add_history(l);
 		}
 		
 		l= readline ("\nWhich method do you want to use?\n1-MiniMax\n2-AlphaBeta\n\nOption: ");
+		add_history(l);
 		while(!(method = is0(l))){
 			l= readline("Invalid! Option: ");
 			add_history(l);
 		}
-
-		l = readline("\nBot difficult:\n1(Easy)\n2\n3\n4(Medium)\n5\n6\n7\n8(Hard)\n\nOption: ");
-		while(!(difficulty = isn(l))){
-			l= readline("Invalid! Option: ");
-			add_history(l);
-		}
 		
+		//if bot vs bot
 		if(botvbot==1){
-			l = readline("\nSecond bot difficult (X):\n1(Easy)\n2\n3\n4(Medium)\n5\n6\n7\n8(Hard)\n\nOption: ");
+			l = readline("\nFirst bot difficult(X):\n1(Easy)\n2\n3\n4(Medium)\n5\n6\n7\n8(Hard)\n\nOption: ");
+			add_history(l);
+			while(!(difficulty = isn(l))){
+				l= readline("Invalid! Option: ");
+				add_history(l);
+			}
+			
+			l = readline("\nSecond bot difficult (O):\n1(Easy)\n2\n3\n4(Medium)\n5\n6\n7\n8(Hard)\n\nOption: ");
+			add_history(l);
 			while(!(difficulty2 = isn(l))){
 				l= readline("Invalid! Option: ");
 				add_history(l);
 			}
+			
+			flip=false;
 		}
 		
+		//if bot vs human
 		if(botvbot==2){
+			l = readline("\nBot difficult:\n1(Easy)\n2\n3\n4(Medium)\n5\n6\n7\n8(Hard)\n\nOption: ");
+			add_history(l);
+			while(!(difficulty = isn(l))){
+				l= readline("Invalid! Option: ");
+				add_history(l);
+			}
 			
 			l= readline("\nWhich symbol do you want to use?\n1-X\n2-O\n\nOption: ");
+			add_history(l);
 			while(!(mysymbol=is0(l))){
 				l= readline("Invalid! Option: ");
 				add_history(l);
@@ -144,30 +106,33 @@ int main(){
 			
 			int stf;
 			l= readline("\nDo you want to start first?\n1-Yes\n2-No\n\nOption: ");
+			add_history(l);
 			while(!(stf=is0(l))){
 				l= readline("Invalid! Option: ");
 				add_history(l);
 			}
 			
 			if(stf==1)
-				flip=true;
+				flip=true; //human first
 			else
-				flip=false;
-		}
-		else
-			flip=true;
-			
+				flip=false; //bot first
+		}			
+		//start game	
 		game();
+		//game end, print time consumed by bot(s)
 		printf("\nTotal elapsed time:%lf\n",totaltime);
 		
+		//delete board and prepare for new game if requested
 		delete a;
 		
 		int k;
 		l= readline("\n\nAnother game?\n1-Yes\n2-No\n\nOption: ");
+		add_history(l);
 		while(!(k=is0(l))){
 			l= readline("Invalid! Option: ");
 			add_history(l);
 		}
+		
 		gg =false;
 		if(k==1) gg = true;
 	}
@@ -175,12 +140,13 @@ int main(){
 	return 0;
 }
 
+//to switch bots or players
 void game (){
 	if(botvbot==1){
 		if(flip)
-			gamex();
-		else
 			gameo();
+		else
+			gamex();
 	}
 	else{
 		if(flip){
@@ -198,6 +164,7 @@ void game (){
 	}
 }
 
+//play bot x with algorithm selected before
 void gamex(){
 	if(method==1)
 		game_bot_mm_x();
@@ -205,6 +172,7 @@ void gamex(){
 		game_bot_ab_x();
 }
 
+//play bot o with algorithm selected before
 void gameo(){
 	if(method==1)
 		game_bot_mm_o();
@@ -212,25 +180,32 @@ void gameo(){
 		game_bot_ab_o();
 }
 
+//human player x
 void game_player_x(){
+	//check if there is a winner or a draw
 	int k = a->final_board();
 	if(k>-1){
 		a->print_board();
 		end(k);
 		return;
 	}
+	
+	//print board and ask for a play
 	a->print_board();
 	
 	int c,x=1;char *l;
 	l=readline("Player X - Choose a column: ");
+	add_history(l);
 	while(x){
 		while((c=isn2(l))==-1){
-			//printf("!%d!\n",c);
 			l=readline("Invalid! Choose other: ");
 			add_history(l);
 		}
 		x = a->play(c,2);
-		if(x)l=readline("Invalid! Choose other: ");
+		if(x){
+			l=readline("Invalid! Choose other: ");
+			add_history(l);
+		}
 	}
 	printf("\n");
 	flip = (!flip);
@@ -238,24 +213,32 @@ void game_player_x(){
 	return;
 }
 
+//human player o
 void game_player_o(){
+	//check if there is a winner or a draw
 	int k = a->final_board();
 	if(k>-1){
 		a->print_board();
 		end(k);
 		return;
 	}
+	
+	//print board and ask for a play
 	a->print_board();
 	
 	int c,x=1;char *l;
 	l=readline("Player O - Choose a column: ");
+	add_history(l);
 	while(x){
 		while((c=isn2(l))==-1){
 			l=readline("Invalid! Choose other: ");
 			add_history(l);
 		}
 		x = a->play(c,1);
-		if(x)l=readline("Invalid! Choose other: ");
+		if(x){
+			l=readline("Invalid! Choose other: ");
+			add_history(l);
+		}
 	}
 	printf("\n");
 	flip = (!flip);
@@ -263,7 +246,9 @@ void game_player_o(){
 	return;
 }
 
+//bot x with minimax
 void game_bot_mm_x(){
+	//check if there is a winner or a draw
 	int k = a->final_board();
 	if(k>-1){
 		a->print_board();
@@ -290,7 +275,9 @@ void game_bot_mm_x(){
 	return;
 }
 
+//bot o with minimax
 void game_bot_mm_o(){
+	//check if there is a winner or a draw
 	int k = a->final_board();
 	if(k>-1){
 		a->print_board();
@@ -316,7 +303,9 @@ void game_bot_mm_o(){
 	return;
 }
 
+//bot x with alphabeta
 void game_bot_ab_x(){
+	//check if there is a winner or a draw
 	int k = a->final_board();
 	if(k>-1){
 		a->print_board();
@@ -342,7 +331,9 @@ void game_bot_ab_x(){
 	return;
 }
 
+//bot o with alphabeta
 void game_bot_ab_o(){
+	//check if there is a winner or a draw
 	int k = a->final_board();
 	if(k>-1){
 		a->print_board();
@@ -368,22 +359,28 @@ void game_bot_ab_o(){
 	return;
 }
 
+//ptint winner or draw
 void end(int x){
 	
 	switch(x){
 		case 0:
 			printf("DRAW!\n");
-			return;
+			break;
 		case 1:
 			printf("O Player Wins!\n");
-			return;
+			break;
 		case 2:
 			printf("X Player Wins!\n");
-			return;
+			break;
 	}
-	
+	if(botvbot==1)
+		printf("X depth: %d\nO depth: %d\n",difficulty2,difficulty);
+	else
+		printf("Bot difficulty: %d\n",difficulty);
 }
 
+//check if valid string and valid number, return 1 or 2
+//0 false
 int is0(char *l){
 	if(l==NULL)return 0;
 	if(!isdigit(l[0]))return 0;
@@ -392,6 +389,8 @@ int is0(char *l){
 	return k;
 }
 
+//check if valid string and valid number, return 1 to 20
+//0 false
 int isn(char *l){
 	if(l==NULL)return 0;
 	if(!isdigit(l[0]))return 0;
@@ -400,6 +399,8 @@ int isn(char *l){
 	return k;
 }
 
+//check if valid string and valid number, return 0 or 6
+//-1 false
 int isn2(char *l){
 	if(l==NULL)return -1;
 	if(!isdigit(l[0]))return -1;
