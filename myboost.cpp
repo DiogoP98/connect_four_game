@@ -1,12 +1,12 @@
 #include "myboost.h"
-#include "common.h" 
 
-std::unordered_map<int,int> Global::m4;
-std::unordered_map<int,int> Global::m5;
-std::unordered_map<int,int> Global::m6;
-std::unordered_map<int,int> Global::m7;
-std::unordered_map<int,int> Global::m6c;
+std::unordered_map<int,int> Global::m4;//combinations o length 4
+std::unordered_map<int,int> Global::m5;//combinations o length 5
+std::unordered_map<int,int> Global::m6;//combinations o length 6
+std::unordered_map<int,int> Global::m7;//combinations o length 7
+std::unordered_map<int,int> Global::m6c;//combinations o length 6 for column
 
+//vectors for eficiency of generation
 std::vector<int> p4;
 std::vector<int> p5;
 std::vector<int> p6;
@@ -16,6 +16,7 @@ void MyBoost::load_boost(){
 	
 	temp.push_back(0);
 	int x;
+	//diagonal size 4
 	while(temp.size()>0){
 		x = temp.front();
 		temp.pop_front();
@@ -30,37 +31,31 @@ void MyBoost::load_boost(){
 			p4.push_back(x*10+3);
 		}
 	}
-	
+	//diagonal size 5
 	for(int i=0;i<(int)p4.size();i++){
 		p5.push_back(p4[i]*10+1);
 		p5.push_back(p4[i]*10+2);
 		p5.push_back(p4[i]*10+3);
-		//printf("4: %d %d\n",p4[i],eval(p4[i]));
 		Global::m4.insert(std::make_pair(p4[i],eval(p4[i])));
 	}
-	
-	//printf("\n");
+	//diagonal size 5
 	for(int i=0;i<(int)p5.size();i++){
 		p6.push_back(p5[i]*10+1);
 		p6.push_back(p5[i]*10+2);
 		p6.push_back(p5[i]*10+3);
 		
-		//printf("5: %d %d\n",p5[i],eval(p5[i]));
 		Global::m5.insert(std::make_pair(p5[i],eval(p5[i])));
 	}
-	//printf("\n");
+	//line
 	for(int i=0;i<(int)p6.size();i++){	
-		//printf("6: %d %d\n",p6[i],eval(p6[i]));
 		Global::m6.insert(std::make_pair(p6[i],eval(p6[i])));
 		
-		//printf("7: %d %d\n",p6[i]*10+1,eval(p6[i]*10+1));
-		//printf("7: %d %d\n",p6[i]*10+2,eval(p6[i]*10+2));
-		//printf("7: %d %d\n",p6[i]*10+3,eval(p6[i]*10+3));
 		Global::m7.insert(std::make_pair(p6[i]*10+1,eval(p6[i]*10+1)));
 		Global::m7.insert(std::make_pair(p6[i]*10+2,eval(p6[i]*10+2)));
 		Global::m7.insert(std::make_pair(p6[i]*10+3,eval(p6[i]*10+3)));
 	}
-	//printf("a\n");
+	
+	//column
 	temp.push_back(0);
 	int k;
 	while(temp.size()>0){
@@ -69,11 +64,10 @@ void MyBoost::load_boost(){
 		
 		k=x*10+1;
 		while(k<100000)k=k*10+3;
-		//printf("%d %d\n",k,eval(k));
 		Global::m6c.insert(std::make_pair(k,eval(k)));
+		
 		k=x*10+2;
 		while(k<100000)k=k*10+3;
-		//printf("%d %d\n",k,eval(k));
 		Global::m6c.insert(std::make_pair(k,eval(k)));
 		
 		if(x<10000){
@@ -84,6 +78,7 @@ void MyBoost::load_boost(){
 	
 }
 
+//evaluate segmente of n pieces
 int MyBoost::eval(int x){
 	int n[4],val;
 	n[0]=x%10;x/=10;
@@ -101,6 +96,7 @@ int MyBoost::eval(int x){
 	return val;
 }
 
+//evaluate 4 pieces
 int MyBoost::eval_aux(int n[]){
 	int s=0,x=-1,i;
 	for(i=0;i<4;i++){
