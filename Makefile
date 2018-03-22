@@ -1,4 +1,4 @@
-EXEC_NAME=a.out
+EXEC_NAME=connect4
 
 CC=g++
 
@@ -6,7 +6,7 @@ CFLAGS= -std=c++11
 
 # Source files
 SRC =                   \
-	test.cpp	\
+	connect4.cpp	\
         minimax.cpp     \
 	alphabeta.cpp   \
 	myboost.cpp     \
