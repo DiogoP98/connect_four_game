@@ -46,12 +46,6 @@ Quando algum jogador ganhar é impresso o símbolo do jogador que ganhou e o tem
 
 -------------------------------------------
 
-### Nota:
-
-Caso encontre algum erro a compilar tente uma compilação limpa: make clean & make. <br/> 
-
--------------------------------------------
-
 ### Autores:
 
 | Nome              | Numero UP     |
