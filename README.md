@@ -36,9 +36,9 @@ Caso escolha jogador contra bot: <br/>
 * Que simbolo pretende usar; <br/> 
 * Se quer ser o primeiro a jogar; <br/> 
 
-Em cada jogada do jogador humano é pedido o número da coluna pretendida (0 a 6) <br/> 
+Em cada jogada do jogador humano é pedido o número da coluna em que pretende jogar (0 a 6) <br/> 
 
-Em cada jogada do bot é mostrado o tempo em milissegundo que demorou a fazer a jogada, numero de nós expandindos (em caso de ser AlphaBeta também o número de podas). <br/> 
+Em cada jogada do bot é mostrado o tempo em milissegundos que demorou a fazer a jogada, numero de nós expandindos (em caso de ser AlphaBeta é mostrado também o número de podas). <br/> 
 
 Quando algum jogador ganhar é impresso o símbolo do jogador que ganhou e o tempo total de jogo do bot. <br/> 
 
@@ -48,7 +48,7 @@ Quando algum jogador ganhar é impresso o símbolo do jogador que ganhou e o tem
 
 ### Nota:
 
-Caso encontre algum erro a compilar tente uma compilacao limpa: make clean & make. <br/> 
+Caso encontre algum erro a compilar tente uma compilação limpa: make clean & make. <br/> 
 
 -------------------------------------------
 
