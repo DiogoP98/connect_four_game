@@ -52,5 +52,3 @@ Quando algum jogador ganhar é impresso o símbolo do jogador que ganhou e o tem
 | ----------------- | ------------- |
 | Diogo Pereira     | 201605323     |
 | Afonso Fernandes  | 201606852     |
-| Lucas Paula       | 201608440     |
-
