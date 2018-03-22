@@ -54,7 +54,9 @@ Caso encontre algum erro a compilar tente uma compilação limpa: make clean & m
 
 ### Autores:
 
-Diogo Pereira           201605323 <br/> 
-Afonso Fernandes        291696852 <br/> 
-Lucas Paula             201608440 <br/> 
+| Nome              | Numero UP     |
+| ----------------- | ------------- |
+| Diogo Pereira     | 201605323     |
+| Afonso Fernandes  | 201606852     |
+| Lucas Paula       | 201608440     |
 
