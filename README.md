@@ -2,7 +2,7 @@
 
 ### Descrição do programa:
 
-No zip que enviámos estão os seguintes ficheiros: “alphabeta.cpp”, “alphabeta.h”, “common.h”, “minimax.cpp”, “minimax.h”, “myboost.cpp”, “myboost.h”, “node.cpp”, “node.h”, “connect4.cpp”,"Makefile". <br/> <br/> 
+Este programa é composto pelos seguintes ficheiros: “alphabeta.cpp”, “alphabeta.h”, “common.h”, “minimax.cpp”, “minimax.h”, “myboost.cpp”, “myboost.h”, “node.cpp”, “node.h”, “connect4.cpp”,"Makefile". <br/> <br/> 
 O ficheiro “connect4.cpp” contém a função main,  o “alphabeta.cpp” contém a implementação do alphabeta, “minimax.cpp” contém a implementação do minimax, “myboost.cpp” contém a função que pré-calcula todas as combinações possíveis de segmentos de 4, 5, 6 e 7 e o “node.cpp” é o ficheiro que contém a implementação de nó. <br/> 
 
 -------------------------------------------
