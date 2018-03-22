@@ -1,10 +1,10 @@
 #ifndef MYBOOST_H
 #define MYBOOST_H
 
-#include <stdio.h>
-#include <limits.h>
 #include <list>
 #include <vector>
+
+#include "common.h" 
 
 class MyBoost{
 public:
