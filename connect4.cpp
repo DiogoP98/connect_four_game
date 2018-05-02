@@ -374,7 +374,7 @@ void end(int x){
 			break;
 	}
 	if(botvbot==1)
-		printf("X depth: %d\nO depth: %d\n",difficulty2,difficulty);
+		printf("X depth: %d\nO depth: %d\n",difficulty,difficulty2);
 	else
 		printf("Bot difficulty: %d\n",difficulty);
 }

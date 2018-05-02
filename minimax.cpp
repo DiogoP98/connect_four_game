@@ -3,7 +3,20 @@
 long long expandidos2;//number of nodes expanded
 
 int Minimax::minimax(Node *a,int k, int depthx){
+	
+	//Check if there is a winning play
+	int lp = a->last_play; 
+	for(int i=0;i<7;i++){
+		int erro_play = a->play(i,k);
+		if(!erro_play){
+			int win = a->final_board();
+			a->rmplay(lp);
+			if(win == k) return i;
+		}
+	}
+	
 	expandidos2 = 0;
+	
 	if(k==1)min_value(a,depthx); //o 
 	else max_value(a,depthx);    //x 
 	printf ("Nos expandidos: %lld\n", expandidos2);
