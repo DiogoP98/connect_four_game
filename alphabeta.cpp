@@ -44,8 +44,8 @@ int Alphabeta::alphabeta(Node *a,int k, int depthx){
 		min_value(a,alfa,beta,depthx); //o
 	else
 		max_value(a,alfa,beta,depthx); //x
-	printf("Numero de podas: %lld\n",podas);
-	printf ("Nos expandidos: %lld\n", expandidos);	
+	//printf("Numero de podas: %lld\n",podas);
+	//printf ("Nos expandidos: %lld\n", expandidos);	
 	return a->best_play;
 }
 
@@ -82,14 +82,6 @@ int Alphabeta::max_value(Node *a, int alfa, int beta, int depth_max) {
 			expandidos++;
 			a->depth++;
 			xx = min_value ( a, alfa, beta, depth_max);
-			
-			//for printing value of childs of first 2 levels
-			if(opt==1){
-				printf("\t(0) %d = %d\n",a->last_play,xx);
-			}
-			if(opt==2){
-				printf("\t\t(1) %d = %d\n",a->last_play,xx);
-			}
 			
 			kv = std::max (v,xx);
 			if (kv!=v) {
@@ -144,14 +136,6 @@ int Alphabeta::min_value(Node *a, int alfa, int beta, int depth_max) {
 		if(!kk){
 			a->depth++;
 			xx = max_value (a, alfa, beta, depth_max);
-			
-			//for printing value of childs of first 2 levels
-			if(opt==1){
-				printf("\t(0) %d = %d\n",a->last_play,xx);
-			}
-			if(opt==2){
-				printf("\t\t(1) %d = %d\n",a->last_play,xx);
-			}
 
 			kv = std::min (v,xx);
 			if (kv!=v) {

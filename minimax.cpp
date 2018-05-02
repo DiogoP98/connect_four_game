@@ -19,7 +19,7 @@ int Minimax::minimax(Node *a,int k, int depthx){
 	
 	if(k==1)min_value(a,depthx); //o 
 	else max_value(a,depthx);    //x 
-	printf ("Nos expandidos: %lld\n", expandidos2);
+	//printf ("Nos expandidos: %lld\n", expandidos2);
 	return a->best_play;
 }
 
@@ -51,13 +51,6 @@ int Minimax::max_value(Node *a,int depth_max){
 			a->depth++;
 			x = min_value(a,depth_max);
 
-			//for printing value of childs of first 2 levels
-			if(opt==1){
-				printf("\t%d = %d (0)\n",a->last_play,x);
-			}
-			if(opt==2){
-				printf("\t\t%d = %d (1)\n",a->last_play,x);
-			}
 			if(val<x){
 				if(a->depth==1)
 					a->best_play=a->last_play;
@@ -98,14 +91,6 @@ int Minimax::min_value(Node *a,int depth_max){
 			expandidos2++;
 			a->depth++;
 			x = max_value(a,depth_max);
-			
-			//for printing value of childs of first 2 levels
-			if(opt==1){
-				printf("\t%d = %d (0)\n",a->last_play,x);
-			}
-			if(opt==2){
-				printf("\t\t%d = %d (1)\n",a->last_play,x);
-			}
 			
 			if(val>x){
 				if(a->depth==1)
